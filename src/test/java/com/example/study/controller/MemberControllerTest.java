@@ -21,7 +21,7 @@ class MemberControllerTest {
 
     @Order(3)
     @DisplayName("get 요청")
-    @Test
+//    @Test
     public void getTest() {
         Response response = given()
                 .when()
@@ -35,7 +35,7 @@ class MemberControllerTest {
 
     @Order(1)
     @DisplayName("post 요청")
-    @Test
+//    @Test
     public void postTest() {
         given()
                 .when()
@@ -46,7 +46,7 @@ class MemberControllerTest {
 
     @Order(2)
     @DisplayName("post 요청2")
-    @Test
+//    @Test
     public void postTest2() throws IOException {
         File file = new ClassPathResource("test.json").getFile();
         String json = new String(Files.readAllBytes(file.toPath()));
