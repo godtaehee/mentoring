@@ -29,4 +29,9 @@ public class BoardController {
         return boardService.updateBoard(id, updateBoard);
     }
 
+    @DeleteMapping("/board/delete")
+    public ResponseBoard delete(Long id) {
+        return boardService.deleteBoard(id);
+    }
+
 }

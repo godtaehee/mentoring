@@ -1,14 +1,15 @@
 package com.example.study.domain.board;
 
+import com.example.study.controller.dto.reply.WriteReply;
+import com.example.study.domain.reply.Reply;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -30,6 +31,11 @@ public class Board {
     private LocalDateTime updateTime;
     private LocalDateTime deleteTime;
 
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Reply> replies;
+
+
     public Board(String title, String content, String writer) {
         this.title = title;
         this.content = content;
@@ -45,4 +51,9 @@ public class Board {
         this.title = title;
         this.content = content;
     }
+
+    public void addReply(Reply reply) {
+        this.replies.add(reply);
+    }
+
 }

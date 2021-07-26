@@ -23,6 +23,7 @@ public class BoardService {
         Board board = boardRepository.save(writeBoard.toEntity());
         ResponseBoard responseBoard = ResponseBoard.of(board);
         return responseBoard;
+
     }
 
     @Transactional
@@ -35,6 +36,13 @@ public class BoardService {
     public ResponseBoard updateBoard(Long id, UpdateBoard updateBoard) {
         Optional<Board> board = boardRepository.findById(id);
         board.get().update(updateBoard.getTitle(), updateBoard.getContent());
+        return ResponseBoard.of(board.get());
+    }
+
+    @Transactional
+    public ResponseBoard deleteBoard(Long id) {
+        Optional<Board> board = boardRepository.findById(id);
+        boardRepository.delete(board.get());
         return ResponseBoard.of(board.get());
     }
 }

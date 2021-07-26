@@ -27,7 +27,6 @@ public class MemberService {
 
     @Transactional
     public void join(JoinMember joinMember) {
-        System.out.println(joinMember.getAge());
         Member member = memberRepository.save(joinMember.toEntity());
 
         Role role = roleRepository.findByName(joinMember.getRoleName())

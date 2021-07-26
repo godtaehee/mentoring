@@ -1,0 +1,42 @@
+package com.example.study.service;
+
+import com.example.study.controller.dto.board.ResponseBoard;
+import com.example.study.controller.dto.reply.ResponseReply;
+import com.example.study.controller.dto.reply.WriteReply;
+import com.example.study.domain.board.Board;
+import com.example.study.domain.reply.Reply;
+import com.example.study.repository.BoardRepository;
+import com.example.study.repository.ReplyRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+import java.util.Optional;
+
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+@Service
+public class ReplyService {
+
+    private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
+
+    @Transactional
+    public ResponseReply write(Long id, WriteReply writeReply) {
+        Optional<Board> board = boardRepository.findById(id);
+        Reply reply = replyRepository.save(writeReply.toEntity(board.get()));
+        boardRepository.save(board.get());
+        return ResponseReply.of(reply);
+    }
+
+    public List<Reply> getReplies(Long id) {
+        Optional<Board> board = boardRepository.findById(id);
+        for(Reply r : board.get().getReplies()) {
+            System.out.println(r.getWriter());
+        }
+        return board.get().getReplies();
+
+    }
+}

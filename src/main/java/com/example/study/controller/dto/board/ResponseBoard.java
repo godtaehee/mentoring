@@ -1,8 +1,8 @@
 package com.example.study.controller.dto.board;
 
 import com.example.study.domain.board.Board;
+import com.example.study.domain.reply.Reply;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 public class ResponseBoard {
