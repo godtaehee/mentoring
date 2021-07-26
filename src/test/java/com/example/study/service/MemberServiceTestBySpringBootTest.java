@@ -1,7 +1,5 @@
 package com.example.study.service;
 
-import com.example.study.controller.dto.ResponseMember;
-import com.example.study.domain.member.Role;
 import com.example.study.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

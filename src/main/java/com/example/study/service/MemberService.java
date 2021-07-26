@@ -1,7 +1,7 @@
 package com.example.study.service;
 
-import com.example.study.controller.dto.JoinMember;
-import com.example.study.controller.dto.ResponseMember;
+import com.example.study.controller.dto.member.JoinMember;
+import com.example.study.controller.dto.member.ResponseMember;
 import com.example.study.domain.member.Member;
 import com.example.study.domain.member.Role;
 import com.example.study.domain.member.UserRole;
@@ -27,7 +27,9 @@ public class MemberService {
 
     @Transactional
     public void join(JoinMember joinMember) {
+        System.out.println(joinMember.getAge());
         Member member = memberRepository.save(joinMember.toEntity());
+
         Role role = roleRepository.findByName(joinMember.getRoleName())
                 .orElseThrow(() -> new RuntimeException());
 

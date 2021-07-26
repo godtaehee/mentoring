@@ -1,7 +1,7 @@
 package com.example.study.controller;
 
-import com.example.study.controller.dto.JoinMember;
-import com.example.study.controller.dto.ResponseMember;
+import com.example.study.controller.dto.member.JoinMember;
+import com.example.study.controller.dto.member.ResponseMember;
 import com.example.study.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,7 @@ public class MemberController {
 
     @PostMapping("/add/role")
     public void join(String roleName) {
+        System.out.println(roleName);
         memberService.addRole(roleName);
     }
 

@@ -1,4 +1,4 @@
-package com.example.study.controller.dto;
+package com.example.study.controller.dto.member;
 
 import com.example.study.domain.member.Member;
 import lombok.Getter;
@@ -18,6 +18,5 @@ public class ResponseMember {
 
     public static ResponseMember of(Member member) {
         return new ResponseMember(member.getName(), member.getAge());
-
     }
 }
