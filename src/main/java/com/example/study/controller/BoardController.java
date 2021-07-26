@@ -1,6 +1,7 @@
 package com.example.study.controller;
 
 import com.example.study.controller.dto.board.ResponseBoard;
+import com.example.study.controller.dto.board.UpdateBoard;
 import com.example.study.controller.dto.board.WriteBoard;
 import com.example.study.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +24,9 @@ public class BoardController {
         return boardService.getBoardDetail(id);
     }
 
-//    @PostMapping
-//    public ResponseBoard update(@RequestBody WriteBoard writeBoard) {
-//
-//
-//    }
+    @PostMapping("/board/update")
+    public ResponseBoard update(Long id, @RequestBody UpdateBoard updateBoard) {
+        return boardService.updateBoard(id, updateBoard);
+    }
 
 }

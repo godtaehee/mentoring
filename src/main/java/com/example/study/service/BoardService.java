@@ -1,6 +1,7 @@
 package com.example.study.service;
 
 import com.example.study.controller.dto.board.ResponseBoard;
+import com.example.study.controller.dto.board.UpdateBoard;
 import com.example.study.controller.dto.board.WriteBoard;
 import com.example.study.domain.board.Board;
 import com.example.study.repository.BoardRepository;
@@ -28,5 +29,12 @@ public class BoardService {
     public ResponseBoard getBoardDetail(Long id) {
         Optional<Board> responseBoard = boardRepository.findById(id);
         return ResponseBoard.of(responseBoard.get());
+    }
+
+    @Transactional
+    public ResponseBoard updateBoard(Long id, UpdateBoard updateBoard) {
+        Optional<Board> board = boardRepository.findById(id);
+        board.get().update(updateBoard.getTitle(), updateBoard.getContent());
+        return ResponseBoard.of(board.get());
     }
 }
