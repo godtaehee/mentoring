@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 public class UpdateBoard {
 
     private String title;
+
     private String content;
 
     public Board toEntity() {

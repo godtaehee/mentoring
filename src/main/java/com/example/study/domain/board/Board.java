@@ -1,6 +1,5 @@
 package com.example.study.domain.board;
 
-import com.example.study.controller.dto.reply.WriteReply;
 import com.example.study.domain.reply.Reply;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -19,16 +17,24 @@ public class Board {
 
     @Id
     @GeneratedValue
-    private Long id; //글번호
+    private Long id;
 
-    private String title; //제목
-    private String content; //콘텐츠
+    private String title;
+
+    private String content;
+
     private String writer;
-    private int viewCount; //조회수
+
+    private int viewCount;
+
     private String secretYn;
+
     private String deleteYn;
+
     private LocalDateTime insertTime;
+
     private LocalDateTime updateTime;
+
     private LocalDateTime deleteTime;
 
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
@@ -50,10 +56,6 @@ public class Board {
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
-    }
-
-    public void addReply(Reply reply) {
-        this.replies.add(reply);
     }
 
 }

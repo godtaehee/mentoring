@@ -1,6 +1,5 @@
 package com.example.study.domain.member;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class WriteReply {
 
     private String content;
+
     private String writer;
 
     public Reply toEntity(Board board) {

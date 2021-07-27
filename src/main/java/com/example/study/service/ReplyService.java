@@ -1,6 +1,5 @@
 package com.example.study.service;
 
-import com.example.study.controller.dto.board.ResponseBoard;
 import com.example.study.controller.dto.reply.ResponseReply;
 import com.example.study.controller.dto.reply.UpdateReply;
 import com.example.study.controller.dto.reply.WriteReply;
@@ -11,7 +10,6 @@ import com.example.study.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;

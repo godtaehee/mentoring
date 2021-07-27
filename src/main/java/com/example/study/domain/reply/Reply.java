@@ -17,7 +17,9 @@ public class Reply {
     @Id
     @GeneratedValue
     private Long id;
+
     private String content;
+
     private String writer;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -21,7 +21,6 @@ public class MemberController {
 
     @PostMapping("/add/role")
     public void join(String roleName) {
-        System.out.println(roleName);
         memberService.addRole(roleName);
     }
 

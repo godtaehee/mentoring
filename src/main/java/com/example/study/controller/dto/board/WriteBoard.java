@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 public class WriteBoard {
 
     private String title;
+
     private String content;
+
     private String writer;
 
     public Board toEntity() {

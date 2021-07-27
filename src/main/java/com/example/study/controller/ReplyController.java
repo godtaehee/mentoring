@@ -1,7 +1,5 @@
 package com.example.study.controller;
 
-import com.example.study.controller.dto.board.ResponseBoard;
-import com.example.study.controller.dto.board.UpdateBoard;
 import com.example.study.controller.dto.reply.ResponseReply;
 import com.example.study.controller.dto.reply.UpdateReply;
 import com.example.study.controller.dto.reply.WriteReply;
@@ -20,7 +18,6 @@ public class ReplyController {
 
     @PostMapping("/reply/write")
     public ResponseReply write(Long id, @RequestBody WriteReply writeReply) {
-        System.out.println(writeReply.getWriter());
         return replyService.write(id, writeReply);
     }
 
