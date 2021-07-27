@@ -4,6 +4,8 @@ import com.example.study.domain.board.Board;
 import com.example.study.domain.reply.Reply;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class ResponseBoard {
 
@@ -25,4 +27,5 @@ public class ResponseBoard {
                         board.getWriter()
                 );
     }
+
 }

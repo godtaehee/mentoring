@@ -6,9 +6,13 @@ import com.example.study.controller.dto.board.WriteBoard;
 import com.example.study.domain.board.Board;
 import com.example.study.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -22,7 +26,6 @@ public class BoardService {
     public ResponseBoard write(WriteBoard writeBoard) {
         Board board = boardRepository.save(writeBoard.toEntity());
         ResponseBoard responseBoard = ResponseBoard.of(board);
-        boardRepository.
         return responseBoard;
 
     }
@@ -45,5 +48,11 @@ public class BoardService {
         Optional<Board> board = boardRepository.findById(id);
         boardRepository.delete(board.get());
         return ResponseBoard.of(board.get());
+    }
+
+    public List<Board> getBoardListUsingPagination(int page) {
+        Page<Board> pagingBoard = boardRepository.findAll(PageRequest.of(page, 10, Sort.by("id").descending()));
+        List<Board> boardList = pagingBoard.getContent();
+        return boardList;
     }
 }
