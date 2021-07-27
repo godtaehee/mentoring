@@ -1,6 +1,5 @@
 package com.example.study.controller;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -12,8 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.hasItem;
 
 class MemberControllerTest {
 
@@ -21,21 +19,22 @@ class MemberControllerTest {
 
     @Order(3)
     @DisplayName("get 요청")
-//    @Test
+    @Test
     public void getTest() {
         Response response = given()
                 .when()
                 .get(address + "/member/getAll");
 
+        // 결과 값이 배열로 오는데 이걸 hasItem으로 해줘야 통과가됨
         response.then()
                 .statusCode(200)
-                .body("name", equalTo("홍길동"))
-                .body("age", equalTo(12));
+                .body("name", hasItem("홍길동"))
+                .body("age", hasItem(12));
     }
 
     @Order(1)
     @DisplayName("post 요청")
-//    @Test
+    @Test
     public void postTest() {
         given()
                 .when()
@@ -46,10 +45,11 @@ class MemberControllerTest {
 
     @Order(2)
     @DisplayName("post 요청2")
-//    @Test
+    @Test
     public void postTest2() throws IOException {
-        File file = new ClassPathResource("test.json").getFile();
+        File file = new ClassPathResource("member/test.json").getFile();
         String json = new String(Files.readAllBytes(file.toPath()));
+        System.out.println(json);
         given()
                 .contentType("application/json").body(json)
                 .when()
