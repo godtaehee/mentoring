@@ -2,6 +2,7 @@ package com.example.study.service;
 
 import com.example.study.controller.dto.board.ResponseBoard;
 import com.example.study.controller.dto.reply.ResponseReply;
+import com.example.study.controller.dto.reply.UpdateReply;
 import com.example.study.controller.dto.reply.WriteReply;
 import com.example.study.domain.board.Board;
 import com.example.study.domain.reply.Reply;
@@ -18,7 +19,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
-public class ReplyService {
+public class ReplyService{
 
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
@@ -33,10 +34,23 @@ public class ReplyService {
 
     public List<Reply> getReplies(Long id) {
         Optional<Board> board = boardRepository.findById(id);
-        for(Reply r : board.get().getReplies()) {
-            System.out.println(r.getWriter());
-        }
         return board.get().getReplies();
+    }
 
+    @Transactional
+    public ResponseReply updateReply(Long id, UpdateReply updateReply) {
+
+        Optional<Reply> reply = replyRepository.findById(id);
+
+        reply.get().update(updateReply);
+
+        return ResponseReply.of(replyRepository.findById(id).get());
+    }
+
+    @Transactional
+    public ResponseReply deleteBoard(Long id) {
+        Reply reply = replyRepository.findById(id).get();
+        replyRepository.deleteById(id);
+        return ResponseReply.of(reply);
     }
 }

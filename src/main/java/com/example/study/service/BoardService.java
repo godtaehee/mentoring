@@ -22,6 +22,7 @@ public class BoardService {
     public ResponseBoard write(WriteBoard writeBoard) {
         Board board = boardRepository.save(writeBoard.toEntity());
         ResponseBoard responseBoard = ResponseBoard.of(board);
+        boardRepository.
         return responseBoard;
 
     }

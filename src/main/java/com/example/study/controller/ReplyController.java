@@ -3,6 +3,7 @@ package com.example.study.controller;
 import com.example.study.controller.dto.board.ResponseBoard;
 import com.example.study.controller.dto.board.UpdateBoard;
 import com.example.study.controller.dto.reply.ResponseReply;
+import com.example.study.controller.dto.reply.UpdateReply;
 import com.example.study.controller.dto.reply.WriteReply;
 import com.example.study.domain.reply.Reply;
 import com.example.study.service.ReplyService;
@@ -29,8 +30,8 @@ public class ReplyController {
     }
 
     @PostMapping("/reply/update")
-    public ResponseReply update(Long id, @RequestBody UpdateBoard updateBoard) {
-        return replyService.updateBoard(id, updateBoard);
+    public ResponseReply update(Long id, @RequestBody UpdateReply updateReply) {
+        return replyService.updateReply(id, updateReply);
     }
 
     @DeleteMapping("/reply/delete")

@@ -1,5 +1,6 @@
 package com.example.study.domain.reply;
 
+import com.example.study.controller.dto.reply.UpdateReply;
 import com.example.study.domain.board.Board;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
@@ -28,6 +29,10 @@ public class Reply {
         this.content = content;
         this.writer = writer;
         this.board = board;
+    }
+
+    public void update(UpdateReply updateReply) {
+        this.content = updateReply.getContent();
     }
 
 }
