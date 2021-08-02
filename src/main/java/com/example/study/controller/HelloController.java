@@ -11,7 +11,7 @@ public class HelloController {
 
     @GetMapping("hello")
     public String hello() {
-        return "hello spring and Complete CI/CD";
+        return "hello spring and Complete CI/CD, Edit JSON";
     }
 
     @GetMapping("pr")
