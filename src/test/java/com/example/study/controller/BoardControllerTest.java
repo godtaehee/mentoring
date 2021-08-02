@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
 class BoardControllerTest {
