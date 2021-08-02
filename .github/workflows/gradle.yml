@@ -8,10 +8,6 @@ on:
     branches: [ taehee ]
   pull_request:
     branches: [ taehee ]
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCE_INSTANCE: instance-1 
-  GCE_INSTANCE_ZONE: asia-northeast3-a
 
 jobs:
   build:
