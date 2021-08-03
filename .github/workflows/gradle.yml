@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ taehee ] 
 
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCE_INSTANCE: instance-01	  
+  GCE_INSTANCE_ZONE: asia-northeast3-a	
+
 jobs: 
   build: 
 
@@ -34,6 +39,6 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         
-        
-    - name: Use gcloud CLI
-      run: gcloud compute scp build/libs/study-0.0.1-SNAPSHOT.jar instance-1:~/deploy --zone=asia-northeast3-a
+    - name: Connect GCE And execute docker ps
+      run: |-
+        gcloud compute ssh "$GCE_INSTANCE" --zone "$GCE_INSTANCE_ZONE" -- 'docker ps'
